@@ -17,14 +17,18 @@ export default function MovieDetail() {
     };
 
   return (
-    <View style={{ flex: 1 }}>
-      <ScrollView style={{ padding: 16 }}>
-        <Text style={{ fontSize: 24, fontWeight: 'bold', marginTop: 16 }}>{movie.title}</Text>
-        <Text style={{ fontSize: 14, color: 'gray', marginVertical: 4, marginTop: 8 }}>Rating: {movie.rating} | Category: {movie.franchise}</Text>
-        <Text style={{ fontSize: 14, color: 'gray', marginVertical: 4 }}>Release Date: {movie.releaseDate} | Duration: {movie.duration}</Text>
-        <Text style={{ marginTop: 12 }}>{movie.synopsis}</Text>
+    <View className="flex-1">
+      <ScrollView className="p-4">
+        <Text className="text-2xl font-bold mt-4">{movie.title}</Text>
+        <Text className="text-sm text-gray-500 mt-2">
+          Rating: {movie.rating} | Category: {movie.franchise}
+        </Text>
+        <Text className="text-sm text-gray-500 mt-1">
+          Release Date: {movie.releaseDate} | Duration: {movie.duration}
+        </Text>
+        <Text className="mt-3">{movie.synopsis}</Text>
 
-        <Text style={{ fontSize: 18, fontWeight: '600', marginTop: 20 }}>Cast</Text>
+        <Text className="text-lg font-semibold mt-6">Cast</Text>
         <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -32,20 +36,24 @@ export default function MovieDetail() {
           keyExtractor={(item) => item.name}
           contentContainerStyle={{ marginTop: 8 }}
           renderItem={({ item }) => (
-            <View style={{ marginRight: 16, alignItems: 'center' }}>
-              <Image source={{ uri: item.image }} style={{ width: 80, height: 80, borderRadius: 40 }} />
-              <Text style={{ marginTop: 8, fontSize: 12 }} numberOfLines={1}>{item.name}</Text>
-              <Text style={{ marginTop: 8, fontSize: 12 }} numberOfLines={1}>{item.role}</Text>
+            <View className="mr-4 items-center">
+              <Image
+                source={{ uri: item.image }}
+                style={{ width: 80, height: 80 }}
+                className="rounded-full"
+              />
+              <Text className="text-xs mt-2" numberOfLines={1}>{item.name}</Text>
+              <Text className="text-xs mt-2" numberOfLines={1}>{item.role}</Text>
             </View>
           )}
         />
       </ScrollView>
 
       <TouchableOpacity
-        style={{ position: 'absolute', bottom: 20, left: 16, right: 16, backgroundColor: 'tomato', padding: 16, borderRadius: 12 }}
-        onPress={() => handleBook()}
+        className="absolute bottom-5 left-4 right-4 bg-red-500 p-4 rounded-xl"
+        onPress={handleBook}
       >
-        <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold' }}>Open in {movie.platform}</Text>
+        <Text className="text-white text-center font-bold">Open in {movie.platform}</Text>
       </TouchableOpacity>
     </View>
   );

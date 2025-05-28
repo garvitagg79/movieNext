@@ -21,32 +21,24 @@ export default function HomeScreen() {
           onPress={() => router.push(`/movie/${item.id}`)}
           style={{ width: CARD_WIDTH }}
         >
-          <View style={{ position: 'relative' }}>
+          <View className="relative">
             <Image
               source={{ uri: item.poster }}
-              style={{ width: CARD_WIDTH, height: CARD_WIDTH * 1.45, borderRadius: 16 }}
+              style={{ width: CARD_WIDTH, height: CARD_WIDTH * 1.45 }}
+              className="rounded-xl"
               resizeMode="cover"
             />
-            <View style={{ position: 'absolute', top: 8, left: 8, backgroundColor: '#0009', padding: 4, borderRadius: 8 }}>
-              <Text style={{ color: 'white', fontSize: 12 }}>{item.rating}</Text>
+            <View className="absolute top-2 left-2 bg-black/60 px-2 py-1 rounded-lg">
+              <Text className="text-white text-xs">{item.rating}</Text>
             </View>
-            <View style={{ position: 'absolute', top: 8, right: 8, backgroundColor: '#0009', padding: 4, borderRadius: 8 }}>
-              <Text style={{ color: 'white', fontSize: 12 }}>{item.franchise}</Text>
+            <View className="absolute top-2 right-2 bg-black/60 px-2 py-1 rounded-lg">
+              <Text className="text-white text-xs">{item.franchise}</Text>
             </View>
-            <View style={{
-              position: 'absolute',
-              bottom: 0,
-              width: '100%',
-              backgroundColor: '#0008',
-              padding: 8,
-              borderBottomLeftRadius: 16,
-              borderBottomRightRadius: 16,
-            }}>
-              <Text style={{ color: 'white', fontSize: 14, textAlign: 'center' }}>{item.status}</Text>
+            <View className="absolute bottom-0 w-full bg-black/50 px-3 py-2 rounded-b-2xl">
+              <Text className="text-white text-sm text-center">{item.status}</Text>
             </View>
           </View>
-          <Text style={{ marginTop: 8, fontWeight: 'bold', textAlign: 'center' }}>{item.title}</Text>
-
+          <Text className="mt-2 font-bold text-center">{item.title}</Text>
         </TouchableOpacity>
       )}
     />
