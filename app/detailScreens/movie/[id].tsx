@@ -6,12 +6,14 @@ import { FlatList, Image, ScrollView, Text, TouchableOpacity, View } from 'react
 
 export default function MovieDetail() {
   const { id } = useLocalSearchParams();
-  const navigation = useNavigation();
   const movie = moviesData.find((m: any) => m.id.toString() === id);
+  const navigation = useNavigation();
 
   useLayoutEffect(() => {
     if (movie) {
-      navigation.setOptions({ title: movie.title });
+      navigation.setOptions({
+        title: movie.title,
+      });
     }
   }, [movie])
 
